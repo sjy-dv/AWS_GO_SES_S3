@@ -77,11 +77,11 @@ func main() {
 	
 	r := mux.NewRouter()
 
-	r.HandleFunc("/ses", SendMailInAWS)
-	r.HandleFunc("/singleupload", SingleUploadToS3)
-	r.HandleFunc("/singledelete", SingleDeleteToS3)
-	r.HandleFunc("/multiupload", MultiFileUploadToS3)
-	r.HandleFunc("/multidelete", MultiFileDeleteToS3)
+	r.HandleFunc("/ses", SendMailInAWS).Methods("POST")
+	r.HandleFunc("/singleupload", SingleUploadToS3).Methods("POST")
+	r.HandleFunc("/singledelete", SingleDeleteToS3).Methods("POST")
+	r.HandleFunc("/multiupload", MultiFileUploadToS3).Methods("POST")
+	r.HandleFunc("/multidelete", MultiFileDeleteToS3).Methods("POST")
 	http.ListenAndServe(":8081", r)
 
 }
